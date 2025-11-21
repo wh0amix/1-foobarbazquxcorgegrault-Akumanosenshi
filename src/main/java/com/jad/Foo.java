@@ -64,4 +64,22 @@ public class Foo {
         Grault grault = new Grault(this);
         this.graults.add(grault);
     }
+    public void setCorge(Corge newCorge) {
+        if (this.corge == newCorge) {
+            return; // Protection contre appels redondants
+        }
+
+        // Nettoie l'ancienne relation
+        if (this.corge != null) {
+            Corge oldCorge = this.corge;
+            this.corge = null; // Évite les boucles
+            oldCorge.setFoo(null);
+        }
+
+        // Établit la nouvelle relation
+        this.corge = newCorge;
+        if (newCorge != null && newCorge.getFoo() != this) {
+            newCorge.setFoo(this);
+        }
+    }
 }
