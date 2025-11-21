@@ -59,4 +59,9 @@ public class Foo {
     public void addBaz(Baz baz) {
         this.bazs.add(baz);
     }
+
+    public void addGrault() {
+        Grault grault = new Grault(this);
+        this.graults.add(grault);
+    }
 }
